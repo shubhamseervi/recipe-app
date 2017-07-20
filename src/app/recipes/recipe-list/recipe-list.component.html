@@ -1,0 +1,29 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Recipes</h1>
+  </div>
+  <div class="col-xs-12">
+    <h5 class="text-uppercase">Add new recipe</h5>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn  btn-block btn-success btn-lg">New Recipe</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <h5 class="text-uppercase">All recipes</h5>
+
+  </div>
+  <div class="col-xs-12">
+
+      <app-recipe-item
+              *ngFor="let recipeEl of recipes"
+              [recipe]="recipeEl">
+      </app-recipe-item>
+  </div>
+</div>
+
