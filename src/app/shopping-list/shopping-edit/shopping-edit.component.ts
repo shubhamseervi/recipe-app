@@ -27,4 +27,13 @@ export class ShoppingEditComponent implements OnInit {
 
     this.slService.addIngredient(newIngredient);
   }
+
+  onDelete() {
+    this.slService.clearIngredients();
+  }
+
+  onClear() {
+     this.nameInputref.nativeElement.value = '';
+     this.amountInputref.nativeElement.value = '';
+  }
 }
