@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ingredient} from "../../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -9,8 +10,6 @@ import {ShoppingListService} from "../shopping-list.service";
 })
 export class ShoppingEditComponent implements OnInit {
 
-  @ViewChild('nameInput') nameInputref: ElementRef;
-  @ViewChild('amountInput') amountInputref: ElementRef;
 
   constructor(private slService: ShoppingListService) { }
 
@@ -18,22 +17,19 @@ export class ShoppingEditComponent implements OnInit {
   }
 
 
-  onAdded() {
-    const ingredientName = this.nameInputref.nativeElement.value;
-    const ingredientAmount = this.amountInputref.nativeElement.value;
-    console.log("ingredientName :",ingredientName);
-    console.log("ingredientAmount :",ingredientAmount);
-    const newIngredient = new Ingredient(ingredientName, ingredientAmount);
+  onAddItem(form: NgForm) {
+    console.log('called');
+    const value = form.value;
+    const newIngredient = new Ingredient(value.name, value.amount);
 
     this.slService.addIngredient(newIngredient);
   }
 
   onDelete() {
-    this.slService.clearIngredients();
+
   }
 
   onClear() {
-     this.nameInputref.nativeElement.value = '';
-     this.amountInputref.nativeElement.value = '';
+
   }
 }
